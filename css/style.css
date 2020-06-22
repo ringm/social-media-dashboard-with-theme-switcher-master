@@ -1,0 +1,297 @@
+:root {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --bg: hsl(0, 0%, 100%);
+  --top-bg-pattern: hsl(225, 100%, 98%);
+  --card-bg: hsl(227, 47%, 96%);
+  --text-01: hsl(228, 12%, 44%);
+  --text-02: hsl(230, 17%, 14%);
+  --toggle: hsl(230, 22%, 74%);
+  --transition-delay: 1s;
+  font-size: 1.4rem;
+  font-family: "Inter", sans-serif;
+  transition: var(--transition-delay);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+svg {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: [margin-left-start] 1fr [margin-left-end main-start] min(90%, 1440px) [main-end margin-right-start] 1fr [margin-right-end];
+  grid-template-rows: [margin-top-start] 1fr [margin-top-end header-start] auto [header-end summary-start] auto [summary-end overview-start] auto [overview-end margin-bottom-start] 1fr [margin-bottom-end attribution-start] auto [attribution-end];
+  grid-row-gap: 5rem;
+}
+
+.header {
+  grid-column: main-start/main-end;
+  grid-row: header-start/header-end;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+}
+@media only screen and (min-width: 685px) {
+  .header {
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.summary {
+  grid-column: main-start/main-end;
+  grid-row: summary-start/summary-end;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  justify-items: center;
+}
+.summary > * {
+  width: 100%;
+}
+
+.overview {
+  grid-column: main-start/main-end;
+  grid-row: overview-start/overview-end;
+}
+.overview__card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  justify-items: center;
+}
+.overview__card-container > * {
+  width: 100%;
+}
+
+.attribution {
+  grid-column: main-start/main-end;
+  grid-row: attribution-start/attribution-end;
+  margin-top: -3rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  background: linear-gradient(180deg, var(--top-bg-pattern) 0%, var(--top-bg-pattern) 30%, var(--bg) 30%, var(--bg) 100%);
+}
+@media only screen and (min-width: 685px) {
+  .container {
+    background: linear-gradient(180deg, var(--top-bg-pattern) 0%, var(--top-bg-pattern) 40%, var(--bg) 40%, var(--bg) 100%);
+  }
+}
+
+.header__title {
+  color: var(--text-02);
+}
+.header__text {
+  margin-top: 0.6rem;
+  color: var(--text-01);
+  font-weight: 700;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--text-01);
+  border-top: 1px solid var(--text-01);
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+}
+@media only screen and (min-width: 685px) {
+  .theme {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+.theme__btn {
+  margin-left: 1.4rem;
+  background: var(--toggle);
+  border-radius: 200px;
+  width: 6rem;
+  height: 3rem;
+  position: relative;
+  cursor: pointer;
+}
+.theme__toggle {
+  background-color: var(--bg);
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  right: 5%;
+  transition: all 0.5s;
+}
+
+.summary__card {
+  background-color: var(--card-bg);
+  text-align: center;
+  border-radius: 0.4rem;
+  padding: 2.4rem;
+  border-top-width: 0.4rem;
+  border-top-style: solid;
+}
+.summary__card__user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.summary__card__user * + * {
+  margin-left: 1rem;
+}
+.summary__card__username {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-01);
+}
+.summary__card__number-total {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--text-02);
+}
+.summary__card__number-desc {
+  text-transform: uppercase;
+  color: var(--text-01);
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  margin-bottom: 2rem;
+}
+.summary__card__variation {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.summary__card__variation::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 4px;
+  background-repeat: no-repeat;
+  margin-right: 0.5rem;
+}
+
+.overview {
+  color: var(--text-01);
+}
+.overview__title {
+  margin-bottom: 3rem;
+}
+.overview__card {
+  background-color: var(--card-bg);
+  border-radius: 0.4rem;
+  padding: 2.4rem;
+  font-weight: 700;
+}
+.overview__card > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.overview__card__desc {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.overview__card__number {
+  font-size: 2.4rem;
+  color: var(--text-02);
+}
+.overview__card__variation {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overview__card__variation::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 4px;
+  background-repeat: no-repeat;
+  margin-right: 0.5rem;
+}
+
+.attribution {
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--text-01);
+}
+
+.attribution a {
+  color: inherit;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+.attribution a:hover {
+  color: #1db489;
+}
+
+body.dark {
+  --bg: hsl(230, 17%, 14%);
+  --top-bg-pattern: hsl(232, 19%, 15%);
+  --card-bg: hsl(228, 28%, 20%);
+  --text-01: hsl(228, 34%, 66%);
+  --text-02: hsl(0, 0%, 100%);
+  --toggle: linear-gradient(90deg, rgba(55, 142, 230, 1) 0%, rgba(62, 218, 129, 1) 100%);
+}
+
+.summary__card.facebook {
+  border-top-color: #198ff5;
+}
+.summary__card.twitter {
+  border-top-color: #1ca0f2;
+}
+.summary__card.instagram {
+  border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #fdc468 0%, #df4996 100%);
+}
+.summary__card.youtube {
+  border-top-color: #c4032a;
+}
+
+.win {
+  color: #1db489;
+}
+.win::before {
+  background-image: url(../images/icon-up.svg);
+}
+
+.loose {
+  color: #dc414c;
+}
+.loose::before {
+  background-image: url(../images/icon-down.svg);
+}
+
+.theme__toggle.dark {
+  right: 55%;
+}

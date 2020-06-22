@@ -1,0 +1,48 @@
+body.dark {
+  --bg: hsl(230, 17%, 14%);
+  --top-bg-pattern: hsl(232, 19%, 15%);
+  --card-bg: hsl(228, 28%, 20%);
+  --text-01: hsl(228, 34%, 66%);
+  --text-02: hsl(0, 0%, 100%);
+  --toggle: linear-gradient(90deg, rgba(55, 142, 230, 1) 0%, rgba(62, 218, 129, 1) 100%);
+}
+
+.summary__card {
+  &.facebook {
+    border-top-color: $facebook;
+  }
+
+  &.twitter {
+    border-top-color: $twitter;
+  }
+
+  &.instagram {
+    border-image-slice: 1;
+    border-image-source: $instagram;
+  }
+
+  &.youtube {
+    border-top-color: $youtube;
+  }
+
+}
+
+.win {
+  color: $lime-green;
+
+  &::before {
+    background-image: url(../images/icon-up.svg);
+  }
+}
+
+.loose {
+  color: $bright-red;
+
+  &::before {
+    background-image: url(../images/icon-down.svg);
+  }
+}
+
+.theme__toggle.dark {
+  right: 55%;
+}
